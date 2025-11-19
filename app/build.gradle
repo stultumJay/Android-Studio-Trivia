@@ -15,21 +15,21 @@
  */
 
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-kapt'
-
 apply plugin: 'androidx.navigation.safeargs'
 
 android {
+    namespace "com.example.android.navigation"
+
     compileSdkVersion 34
+
     buildFeatures {
         dataBinding true
     }
 
     defaultConfig {
-        applicationId 'com.example.android.navigation'
+        applicationId "com.example.android.navigation"
         minSdkVersion 21
         targetSdkVersion 34
         vectorDrawables.useSupportLibrary = true
@@ -40,7 +40,8 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'),
+                    'proguard-rules.pro'
         }
     }
 
@@ -60,25 +61,25 @@ dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$version_kotlin"
 
-    // Constraint Layout
+    // ConstraintLayout
     implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
 
-    // Core
+    // Core libraries
     implementation "androidx.core:core:$version_core"
     implementation "androidx.appcompat:appcompat:1.7.0"
 
     // Material Design
     implementation "com.google.android.material:material:$version_material"
 
-    // Navigation
-    implementation "android.arch.navigation:navigation-fragment-ktx:$version_navigation"
-    implementation "android.arch.navigation:navigation-ui-ktx:$version_navigation"
+    // Modern AndroidX Navigation (replace old android.arch.*)
+    implementation "androidx.navigation:navigation-fragment-ktx:2.7.7"
+    implementation "androidx.navigation:navigation-ui-ktx:2.7.7"
 
-    // Lifecycle
+    // Lifecycle components
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
 
-    // Dependencies
+    // Testing
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test:runner:1.5.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
